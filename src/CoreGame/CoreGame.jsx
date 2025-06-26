@@ -2,18 +2,23 @@ import { useState, useEffect } from "react";
 import './CoreGame.css'
 function CoreGame() {
     const [ number, setNumber ] = useState(1)
-    const [ addNumber, setAddNumber ] = useState(0)
+    const [ addNumber, setAddNumber ] = useState(1)
     const [ numberPercet, setNumberPercent ] = useState(0)
 
     function numberCreator(){
-        const newNumber = number + addNumber;
-        setNumber(newNumber);
+        
+        setNumber(prevNumber => prevNumber + addNumber);
+        
        
     }
     function startGame() {
         setInterval(numberCreator, 1000)
     }
 
+    function addToNumber(){
+        setAddNumber(prev => prev + 1)
+        startGame();
+    }
     return(
     <div>
         
@@ -26,7 +31,7 @@ function CoreGame() {
         <br />
             <h3>{number}</h3>
         <div className="first-row">
-            <div className="add-one">
+            <div className="add-one" onClick={()=>{addToNumber()}}>
                 <p>Add {addNumber +1} additonal per second</p>
                 <p></p>
             </div>
