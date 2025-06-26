@@ -6,13 +6,22 @@ function CoreGame() {
     const [ numberPercet, setNumberPercent ] = useState(0)
 
     function numberCreator(){
-        setNumber(number + addNumber)
+        const newNumber = number + addNumber;
+        setNumber(newNumber);
+       
     }
+    function startGame() {
+        setInterval(numberCreator, 1000)
+    }
+
     return(
     <div>
         
         <div className="intro-text">
             <h3>Let the games begin. This game is quite simple if you like Idle Games. All you have to do is sit back and watch a number get bigger. Well that could be a little boring, but what if, we allow you to buy upgrades to increase how fast that number goes up? Do I have you attention now? </h3>
+        </div>
+        <div>
+            <button onClick={startGame}>Start the Game!</button>
         </div>
         <br />
             <h3>{number}</h3>
