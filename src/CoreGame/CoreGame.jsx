@@ -3,20 +3,36 @@ import './CoreGame.css'
 function CoreGame() {
     const [ number, setNumber ] = useState(1)
     const [ addNumber, setAddNumber ] = useState(1)
-    const [ numberPercet, setNumberPercent ] = useState(0)
+    const [ numberPercent, setNumberPercent ] = useState(0)
+
+
+    const [ invervalID, setInvervalID ] = useState(null);
 
     function numberCreator(){
-        
+        if(numberPercent > 0){
+            setNumber( prevNumber => (prevNumber + addNumber) + ((numberPercent / 100) * addNumber))
+        }else{
         setNumber(prevNumber => prevNumber + addNumber);
         
+        }
        
     }
     function startGame() {
-        setInterval(numberCreator, 1000)
+         setInvervalID( setInterval(numberCreator, 1000))
+         
     }
 
     function addToNumber(){
-        setAddNumber(prev => prev + 1)
+        setAddNumber(prev => prev + 1);
+        
+        clearInterval(invervalID);
+        startGame();
+    }
+
+    function addPercent(){
+        setNumberPercent(prevPercent => prevPercent + 5)
+        console.log('Precent was: ', numberPercent)
+        clearInterval(invervalID);
         startGame();
     }
     return(
@@ -29,14 +45,14 @@ function CoreGame() {
             <button onClick={startGame}>Start the Game!</button>
         </div>
         <br />
-            <h3>{number}</h3>
+            <h3>{Math.floor(number)}</h3>
         <div className="first-row">
             <div className="add-one" onClick={()=>{addToNumber()}}>
-                <p>Add {addNumber +1} additonal per second</p>
+                <p>Add {addNumber} additonal per second</p>
                 <p></p>
             </div>
-            <div className="add-one">
-                <p>Add a certain percent total increase</p>
+            <div className="add-one" onClick={()=>{addPercent()}}>
+                <p>Add + {numberPercent + 5}% to total increase</p>
             </div>
         </div>
     </div>
