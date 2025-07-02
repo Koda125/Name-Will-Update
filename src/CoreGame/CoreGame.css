@@ -1,15 +1,45 @@
 
 
 .add-one{
-    border-style:groove;
+    min-height: 75px;
+    max-width: 200px;
+    border:3px solid black;
    border-width: 3px;
     margin-right: 10px;
     box-shadow: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     
 }
 
 .first-row {
     display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: center; 
+  justify-content: center;
 }
+
+.intro-text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.big-number{
+    display: flex;
+    justify-content: center;
+    
+    
+}
+
+.number-display{
+    border: 3px;
+    border-style: groove;
+    border-color: black;
+    min-width: 50px;
+    display: flex;
+    justify-content: center;
+}
+

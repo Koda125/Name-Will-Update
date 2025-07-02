@@ -45,11 +45,15 @@ function CoreGame() {
             <button onClick={startGame}>Start the Game!</button>
         </div>
         <br />
-            <h3>{Math.floor(number)}</h3>
+        <div className="big-number">
+            <h3 className="number-display">{Math.floor(number)}</h3>
+        </div>
         <div className="first-row">
             <div className="add-one" onClick={()=>{addToNumber()}}>
-                <p>Add {addNumber} additonal per second</p>
-                <p></p>
+                <div>
+                    <p>Add {addNumber} additonal per second</p>
+                </div>
+                
             </div>
             <div className="add-one" onClick={()=>{addPercent()}}>
                 <p>Add + {numberPercent + 5}% to total increase</p>
