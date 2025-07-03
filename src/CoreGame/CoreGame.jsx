@@ -62,7 +62,7 @@ function CoreGame() {
         </div>
         <br />
         <div className="big-number">
-            <h3 className="number-display">{Math.floor(number)}</h3>
+            <h3 className="number-display">2000000000</h3>
         </div>
         <div className="first-row">
             <div className="add-one" onClick={()=>{addToNumber()}}>
@@ -75,6 +75,28 @@ function CoreGame() {
             <div className="add-one" onClick={()=>{addPercent()}}>
                 <p>Add + {numberPercent + 5}% to total increase</p>
                 <p>Price: {Math.floor(percentPrice)}</p>
+            </div>
+            <div className="add-one" >
+                <p>Place Holder</p>
+                <p>Price: Placeholder</p>
+            </div>
+        </div>
+        <br/>
+        <div className="first-row">
+            <div className="add-one" >
+                <div>
+                    <p>PLACEHOLDER</p>
+                    <p>Price: PLACEHOLDER</p>
+                </div>
+                
+            </div>
+            <div className="add-one">
+                <p>PLACEHOLDER</p>
+                <p>Price: PLACE HOLDER</p>
+            </div>
+            <div className="add-one" >
+                <p>Place Holder</p>
+                <p>Price: Placeholder</p>
             </div>
         </div>
         <footer className="core-footer">
