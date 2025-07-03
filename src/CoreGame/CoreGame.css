@@ -2,14 +2,13 @@
 
 .add-one{
     min-height: 75px;
-    max-width: 200px;
+    max-height: 75px;
+    min-width: 200px;
     border:3px solid black;
    border-width: 3px;
     margin-right: 10px;
     box-shadow: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    
     
 }
 
@@ -43,3 +42,7 @@
     justify-content: center;
 }
 
+.core-footer {
+    display: flex;
+    justify-content: center;
+}

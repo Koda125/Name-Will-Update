@@ -4,6 +4,9 @@ function CoreGame() {
     const [ number, setNumber ] = useState(1)
     const [ addNumber, setAddNumber ] = useState(1)
     const [ numberPercent, setNumberPercent ] = useState(0)
+    const [ numberAddPrice, setAddNumberPrice ] = useState(5);
+    const [ percentPrice, setPercentPrice ] = useState(10);
+    const [ total, setTotal ] = useState(1);
 
 
     const [ invervalID, setInvervalID ] = useState(null);
@@ -11,8 +14,10 @@ function CoreGame() {
     function numberCreator(){
         if(numberPercent > 0){
             setNumber( prevNumber => (prevNumber + addNumber) + ((numberPercent / 100) * addNumber))
+            setTotal(prev => (prev + number))
         }else{
         setNumber(prevNumber => prevNumber + addNumber);
+        setTotal(prev => (prev + number));
         
         }
        
@@ -23,17 +28,28 @@ function CoreGame() {
     }
 
     function addToNumber(){
+        if( numberAddPrice <= number ){
         setAddNumber(prev => prev + 1);
+        setNumber(prev => (prev - numberAddPrice))
+        setAddNumberPrice(prev => (prev / .66))
         
         clearInterval(invervalID);
         startGame();
+        }else{
+            return null
+        }
     }
 
     function addPercent(){
+        if( percentPrice <= number ){
         setNumberPercent(prevPercent => prevPercent + 5)
-        console.log('Precent was: ', numberPercent)
+        setNumber(prev => (prev - percentPrice))
+        setPercentPrice(prev => (prev / .6))
         clearInterval(invervalID);
         startGame();
+        }else{
+            return null;
+        }
     }
     return(
     <div>
@@ -52,13 +68,18 @@ function CoreGame() {
             <div className="add-one" onClick={()=>{addToNumber()}}>
                 <div>
                     <p>Add {addNumber} additonal per second</p>
+                    <p>Price: {Math.floor(numberAddPrice)}</p>
                 </div>
                 
             </div>
             <div className="add-one" onClick={()=>{addPercent()}}>
                 <p>Add + {numberPercent + 5}% to total increase</p>
+                <p>Price: {Math.floor(percentPrice)}</p>
             </div>
         </div>
+        <footer className="core-footer">
+            {/* <h4>Total Number Generated: {total.toFixed(0)}</h4> */}
+        </footer>
     </div>
     )
 }
