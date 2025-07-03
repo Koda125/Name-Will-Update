@@ -62,7 +62,7 @@ function CoreGame() {
         </div>
         <br />
         <div className="big-number">
-            <h3 className="number-display">2000000000</h3>
+            <h3 className="number-display">{number}</h3>
         </div>
         <div className="first-row">
             <div className="add-one" onClick={()=>{addToNumber()}}>
